@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build-css": "node-sass --include-path scss scss/main.scss build/css/style.min.css",
+    "build-js": "browserify js/**.js>build/js/script.min.js"
   },
   "keywords": [],
   "author": "",
