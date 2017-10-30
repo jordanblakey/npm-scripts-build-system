@@ -4,11 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build-css": "node-sass --include-path scss scss/main.scss build/css/style.min.css",
-    "build-js": "browserify js/**.js>build/js/script.min.js"
+    "clean-build": "rm -rf build && mkdir -p build build/js build/css",
+    "build-html": "cp src/*.html build",
+    "build-css": "node-sass --include-path scss src/scss/main.scss build/css/style.min.css",
+    "build-js": "browserify src/js/**.js>build/js/app.min.js",
+    "build": "npm run clean-build && npm run build-html && npm run build-css && npm run build-js",
+    "server": "cd build && python -m SimpleHTTPServer 8000",
+    "start": "nodemon -e js, scss -x \"npm run build && npm run server\" --ignore build/"
   },
   "keywords": [],
-  "author": "",
+  "author": "Jordan Blakey",
   "license": "ISC",
   "devDependencies": {
     "browserify": "^14.5.0",
